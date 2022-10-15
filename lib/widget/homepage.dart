@@ -8,6 +8,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+ int index = 0; 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +28,16 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(
                 Icons.settings,
                 color: Colors.black,
-              ))
+              )), 
         ],
       ),
+
+      body: SingleChildScrollView(
+        child: 
+      Padding(padding: const EdgeInsets.all(12.0), 
+      child: Column(
+        children:[], 
+      ))), 
     );
   }
 }

@@ -10,7 +10,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentindex = 0;
 
-  late String result;
+  late String result = '';
+  late double height = 0;
+  late double weight = 0;
 
   // declaring the inputController to get the inputs value.
 
@@ -25,7 +27,7 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
             appBar: AppBar(
               title: const Text(
-                'BMI Caculator',
+                'BMI Calculator',
                 style: TextStyle(color: Colors.black),
               ),
               elevation: 0.0,
@@ -99,20 +101,20 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                             width: double.infinity,
                             child: TextButton(
-                              onPressed: () {
-                                double h =
-                                    double.parse(heightController.value.text);
-                                double w =
-                                    double.parse(heightController.value.text);
-                              },
-                              child: Container(
-                                color: Colors.blue,
-                                child: const Text('Calculate',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    )),
-                              ),
-                            )),
+                                onPressed: () {
+                                  double height =
+                                      double.parse(heightController.value.text);
+                                  double weight =
+                                      double.parse(weightController.value.text);
+                                  calculateBmi(height, weight);
+                                },
+                                child: Container(
+                                  color: Colors.blue,
+                                  child: const Text('Calculate',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      )),
+                                ))),
 
                         const SizedBox(height: 20.0),
                         const SizedBox(
@@ -142,7 +144,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void calculateBmi(double height, double weight) {
-    double finalresult = weight / (height * height);
+    double finalresult = weight / (height * height / 10000);
     String bmi = finalresult.toStringAsFixed(2);
     setState(() {
       result = bmi;

@@ -47,4 +47,13 @@ class _HomePageState extends State<HomePage> {
       currentindex = index;
     });
   }
+
+  // creating a new custom widget
+
+  Widget radioButton(String value, Color color, int index) {
+    return Expanded(
+        child: Container(
+      child: FlatButton(),
+    ));
+  }
 }

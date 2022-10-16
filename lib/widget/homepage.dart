@@ -10,6 +10,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentindex = 0;
 
+  late String result;
+
+  // declaring the inputController to get the inputs value.
+
+  TextEditingController heightController = TextEditingController();
+  TextEditingController weightController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,6 +61,8 @@ class _HomePageState extends State<HomePage> {
                             )),
                         TextField(
                           keyboardType: TextInputType.number,
+                          // adding the controller
+                          controller: heightController,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               hintText: 'Your height in Cm',
@@ -71,6 +80,7 @@ class _HomePageState extends State<HomePage> {
                             )),
                         TextField(
                           keyboardType: TextInputType.number,
+                          controller: weightController,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               hintText: 'Your Weight in Kg',
@@ -113,6 +123,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     )))));
+  }
+
+  String calculateBmi(double height, double weight) {
+    double result = weight / (height * height);
+    String bmi = result.toStringAsFixed(2);
+    return bmi;
   }
 
 // declaring a function to change the index value on button pressed.

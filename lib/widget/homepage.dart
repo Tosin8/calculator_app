@@ -99,7 +99,12 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                             width: double.infinity,
                             child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                double h =
+                                    double.parse(heightController.value.text);
+                                double w =
+                                    double.parse(heightController.value.text);
+                              },
                               child: Container(
                                 color: Colors.blue,
                                 child: const Text('Calculate',
@@ -121,14 +126,27 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 50.0),
+                        SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              result,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ))
                       ],
                     )))));
   }
 
-  String calculateBmi(double height, double weight) {
-    double result = weight / (height * height);
-    String bmi = result.toStringAsFixed(2);
-    return bmi;
+  void calculateBmi(double height, double weight) {
+    double finalresult = weight / (height * height);
+    String bmi = finalresult.toStringAsFixed(2);
+    setState(() {
+      result = bmi;
+    });
   }
 
 // declaring a function to change the index value on button pressed.
